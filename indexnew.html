@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Karingal Computer Club Inc.</title>
+    <!-- Font Awesome for Techy Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter for clean, modern readability -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-panel: #13131a;
+            --bg-panel-hover: #1c1c26;
+            --primary-purple: #3d2c5a;
+            --accent-purple: #7a6b99;
+            --text-main: #e0e0e6;
+            --text-muted: #9898a6;
+            --border-color: #2a2a35;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            /* Subtle Geometric Background: Grid + Radial Glows */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(61, 44, 90, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(61, 44, 90, 0.15) 0%, transparent 40%),
+                linear-gradient(rgba(122, 107, 153, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(122, 107, 153, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-purple);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: #b8a9d4;
+        }
+
+        /* --- Navigation --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo i {
+            color: var(--accent-purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* --- Layout & Sections --- */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+            padding-top: 5rem; /* Offset for fixed header */
+            margin-top: -5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        h2 i {
+            color: var(--accent-purple);
+            font-size: 1.5rem;
+        }
+
+        /* --- Hero Section --- */
+        #home {
+            text-align: center;
+            padding-top: 8rem;
+            margin-top: -8rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary-purple);
+            color: var(--text-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            border: 1px solid var(--accent-purple);
+        }
+
+        .cta-button:hover {
+            background-color: var(--bg-panel-hover);
+            color: var(--text-main);
+            transform: translateY(-2px);
+        }
+
+        /* --- About Section --- */
+        .about-content {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .about-icon {
+            font-size: 3rem;
+            color: var(--accent-purple);
+            flex-shrink: 0;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- OS Support Grid --- */
+        .os-support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .os-card {
+            background: var(--bg-panel-hover);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .os-card:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
+        .os-card i {
+            font-size: 2rem;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .os-card h4 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .os-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Suppliers Grid --- */
+        .suppliers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .supplier-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .supplier-card:hover {
+            border-color: var(--accent-purple);
+            background: var(--bg-panel-hover);
+            transform: translateY(-3px);
+        }
+
+        .supplier-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .supplier-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            flex-grow: 1;
+        }
+
+        .supplier-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        /* --- Calendar Section --- */
+        .calendar-container {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .calendar-header {
+            background: var(--primary-purple);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .calendar-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .calendar-header i {
+            color: var(--accent-purple);
+        }
+
+        .calendar-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            background-color: #0f0f13;
+        }
+
+        .calendar-note {
+            padding: 1rem 1.5rem;
+            background: var(--bg-panel-hover);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .calendar-note i {
+            color: var(--accent-purple);
+        }
+
+        /* --- Chat Section --- */
+        .chat-container {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: var(--primary-purple);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .chat-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .chat-header .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #6b997a; /* Muted green for online status */
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* --- Footer & Social --- */
+        footer {
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-purple);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Back to Top Button --- */
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-purple);
+            color: var(--text-main);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent-purple);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            z-index: 999;
+            font-size: 1.2rem;
+        }
+
+        #backToTop:hover {
+            background: var(--bg-panel-hover);
+            transform: translateY(-3px);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; 
+            }
+            
+            nav {
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .calendar-iframe {
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Karingal Computer Club</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                <li><a href="#suppliers"><i class="fa-solid fa-server"></i> Suppliers</a></li>
+                <li><a href="#calendar"><i class="fa-solid fa-calendar-days"></i> Events</a></li>
+                <li><a href="#chat"><i class="fa-solid fa-comments"></i> Chat</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home">
+            <h1 class="hero-title">The Karingal Computer Club Inc.</h1>
+            <p class="hero-subtitle">A welcoming social community for technology enthusiasts, hobbyists, and learners in Karingal, Victoria.</p>
+            <a href="#about" class="cta-button">
+                Discover Our Purpose <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2><i class="fa-solid fa-users-gear"></i> About Our Club</h2>
+            <div class="about-content">
+                <i class="fa-solid fa-laptop-code about-icon"></i>
+                <div class="about-text">
+                    <p>Founded in the heart of Karingal, Victoria, The Karingal Computer Club Inc. is a non-profit social organization dedicated to bringing together local technology enthusiasts. Our community is diverse and inclusive, welcoming users of all platforms and experience levels.</p>
+                    
+                    <p><strong>Platform Support:</strong> We provide dedicated support and discussion groups for <strong>Windows and Microsoft Software</strong>, including everything from Windows 10/11 troubleshooting to Office 365, PowerShell scripting, and .NET development. We also have strong <strong>Linux support for all major distributions</strong> including Ubuntu, Fedora, Debian, Arch Linux, openSUSE, Mint, and more. Whether you're compiling kernels, managing systemd services, or troubleshooting package managers, our Linux community has you covered. We also welcome our <strong>Apple and macOS users</strong> who contribute to our diverse tech conversations.</p>
+                    
+                    <p>Our purpose is to foster knowledge sharing across all platforms, provide a supportive environment for troubleshooting and learning, and build genuine community connections through our shared passion for technology. We host regular meetups, hardware swap meets, and collaborative workshops.</p>
+                    
+                    <div class="os-support-grid">
+                        <div class="os-card">
+                            <i class="fa-brands fa-windows"></i>
+                            <h4>Windows</h4>
+                            <p>Windows 10/11, Office 365, PowerShell</p>
+                        </div>
+                        <div class="os-card">
+                            <i class="fa-brands fa-linux"></i>
+                            <h4>Linux</h4>
+                            <p>Ubuntu, Fedora, Debian, Arch, Mint</p>
+                        </div>
+                        <div class="os-card">
+                            <i class="fa-brands fa-apple"></i>
+                            <h4>macOS</h4>
+                            <p>Mac hardware and software support</p>
+                        </div>
+                        <div class="os-card">
+                            <i class="fa-solid fa-code"></i>
+                            <h4>Development</h4>
+                            <p>Cross-platform tools and frameworks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Local Suppliers Section -->
+        <section id="suppliers">
+            <h2><i class="fa-solid fa-store"></i> Local & National Hardware Suppliers</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Supporting trusted businesses is a core value of our club. Here are six highly regarded computer hardware retailers that our members rely on for parts, builds, and tech.</p>
+            
+            <div class="suppliers-grid">
+                <!-- Supplier 1: PCCG -->
+                <div class="supplier-card">
+                    <h3><i class="fa-solid fa-cube"></i> PC Case Gear (PCCG)</h3>
+                    <p>A legendary Australian retailer with a massive online catalog. Excellent for PC components, gaming peripherals, and enthusiast-grade hardware.</p>
+                    <a href="https://www.pccasegear.com" target="_blank" rel="noopener" class="supplier-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+
+                <!-- Supplier 2: Scorptec -->
+                <div class="supplier-card">
+                    <h3><i class="fa-solid fa-memory"></i> Scorptec</h3>
+                    <p>A Melbourne-born institution with multiple local showrooms. Excellent for high-end components, custom builds, and expert in-person advice.</p>
+                    <a href="https://www.scorptec.com.au" target="_blank" rel="noopener" class="supplier-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+
+                <!-- Supplier 3: Centre Com -->
+                <div class="supplier-card">
+                    <h3><i class="fa-solid fa-desktop"></i> Centre Com</h3>
+                    <p>Located in Richmond, known for competitive pricing on PC parts, business IT solutions, and a wide range of consumer hardware.</p>
+                    <a href="https://www.centrecom.com.au" target="_blank" rel="noopener" class="supplier-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+
+                <!-- Supplier 4: PLE -->
+                <div class="supplier-card">
+                    <h3><i class="fa-solid fa-microchip"></i> PLE (Ple Computers)</h3>
+                    <p>Highly regarded for their excellent pricing and customer service, offering a vast selection of components with reliable national shipping.</p>
+                    <a href="https://www.ple.com.au" target="_blank" rel="noopener" class="supplier-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+
+                <!-- Supplier 5: JB Hi-Fi -->
+                <div class="supplier-card">
+                    <h3><i class="fa-solid fa-store"></i> JB Hi-Fi</h3>
+                    <p>A household name with stores across Melbourne. A highly convenient go-to for everyday tech, laptops, peripherals, and consumer electronics.</p>
+                    <a href="https://www.jbhifi.com.au" target="_blank" rel="noopener" class="supplier-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+
+                <!-- Supplier 6: Umart -->
+                <div class="supplier-card">
+                    <h3><i class="fa-solid fa-boxes-stacked"></i> Umart</h3>
+                    <p>With a large warehouse in Dandenong South, Umart is incredibly close to Karingal and offers a massive, budget-friendly catalog of IT equipment.</p>
+                    <a href="https://www.umart.com.au" target="_blank" rel="noopener" class="supplier-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Calendar Section -->
+        <section id="calendar">
+            <h2><i class="fa-solid fa-calendar-days"></i> Club Events & Meetups</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Stay up to date with our upcoming events, workshops, and social meetups. The calendar below shows all scheduled activities for the club.</p>
+            
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h3>Karingal Computer Club Events</h3>
+                </div>
+                <!-- Embedded Google Calendar -->
+                <!-- Replace the src URL below with your actual Google Calendar embed URL -->
+                <iframe 
+                    class="calendar-iframe" 
+                    src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID%40group.calendar.google.com&ctz=Australia%2FMelbourne"
+                    frameborder="0" 
+                    scrolling="no">
+                </iframe>
+                <div class="calendar-note">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Calendar is view-only for visitors. Club administrators can edit events by logging into their Google account.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section id="chat">
+            <h2><i class="fa-solid fa-comments"></i> Club Chat</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Join the conversation with other members! Use the chat box below to say hello, ask questions, or just hang out.</p>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <span class="status-dot"></span>
+                    <h3>Live Community Chat</h3>
+                </div>
+                <!-- Embedded Cbox Chat -->
+                <iframe src="https://www3.cbox.ws/box/?boxid=3555789&boxtag=csn0TI" width="100%" height="450" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto" style="background-color: #0f0f13;"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="mailto:info@karingalcomputerclub.org.au" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="footer-text">&copy; 2026 The Karingal Computer Club Inc. | Karingal, Victoria, Australia</p>
+        <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.8rem;">Promoting technology, community, and lifelong learning.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Back to Top Button Logic
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.pointerEvents = 'auto';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.pointerEvents = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll offset adjustment for fixed header (fallback for older browsers)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
