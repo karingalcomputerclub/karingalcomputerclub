@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Karingal Computer Club Inc.</title>
+    <title>The Karingal Computer Club</title>
     <!-- Font Awesome for Techy Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts: Inter for clean, modern readability -->
@@ -90,6 +90,7 @@
 
         .logo i {
             color: var(--accent-purple);
+            font-size: 1.75rem; 
         }
 
         .nav-links {
@@ -119,7 +120,7 @@
 
         section {
             margin-bottom: 5rem;
-            padding-top: 5rem; /* Offset for fixed header */
+            padding-top: 5rem; 
             margin-top: -5rem;
         }
 
@@ -210,7 +211,7 @@
         /* --- OS & Interest Support Grid (Evenly Fitted) --- */
         .os-support-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Exactly 3 equal columns */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 1rem;
             margin-top: 1.5rem;
         }
@@ -223,7 +224,6 @@
             text-align: center;
             transition: var(--transition);
             
-            /* Link Styling Overrides */
             text-decoration: none;
             color: var(--text-main);
             display: block; 
@@ -383,7 +383,7 @@
         .chat-header .status-dot {
             width: 8px;
             height: 8px;
-            background-color: #6b997a; /* Muted green for online status */
+            background-color: #6b997a; 
             border-radius: 50%;
             display: inline-block;
         }
@@ -466,7 +466,6 @@
                 text-align: center;
             }
 
-            /* Stack OS grid to 2 columns on smaller screens */
             .os-support-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -477,7 +476,6 @@
         }
 
         @media (max-width: 480px) {
-            /* Stack OS grid to 1 column on very small screens */
             .os-support-grid {
                 grid-template-columns: 1fr;
             }
@@ -506,7 +504,7 @@
     <main>
         <!-- Hero Section -->
         <section id="home">
-            <h1 class="hero-title">The Karingal Computer Club Inc.</h1>
+            <h1 class="hero-title">The Karingal Computer Club</h1>
             <p class="hero-subtitle">A welcoming social community for technology enthusiasts, hobbyists, and learners in Karingal, Victoria.</p>
             <a href="#about" class="cta-button">
                 Discover Our Purpose <i class="fa-solid fa-arrow-down"></i>
@@ -519,13 +517,15 @@
             <div class="about-content">
                 <i class="fa-solid fa-laptop-code about-icon"></i>
                 <div class="about-text">
-                    <p>Founded in the heart of Karingal, Victoria, The Karingal Computer Club Inc. is a non-profit social organization dedicated to bringing together local technology enthusiasts. Our community is diverse and inclusive, welcoming users of all platforms and experience levels.</p>
+                    <p>Founded in the heart of Karingal, Victoria, The Karingal Computer Club is a non-profit social organization dedicated to bringing together local technology enthusiasts. Our community is diverse and inclusive, welcoming users of all platforms and experience levels.</p>
                     
                     <p><strong>Platform Support:</strong> We provide dedicated support and discussion groups for <strong>Windows and Microsoft Software</strong>, including everything from Windows 10/11 troubleshooting to Office 365, PowerShell scripting, and .NET development. We also have strong <strong>Linux support for all major distributions</strong> including Ubuntu, Fedora, Debian, Arch Linux, openSUSE, Mint, and more. Whether you're compiling kernels, managing systemd services, or troubleshooting package managers, our Linux community has you covered. We also welcome our <strong>Apple and macOS users</strong> who contribute to our diverse tech conversations.</p>
                     
                     <p>Beyond traditional computing, we are deeply passionate about the beauty of cutting-edge Artificial Intelligence. From exploring large language models and generative art to running local AI models and experimenting with machine learning, we believe AI is an incredibly fun and creative frontier. Our club provides a welcoming space to demystify AI, share prompts, and explore how these powerful tools can be used for both practical projects and pure entertainment.</p>
                     
                     <p>Our purpose is to foster knowledge sharing across all platforms, provide a supportive environment for troubleshooting and learning, and build genuine community connections through our shared passion for technology. We host regular meetups, hardware swap meets, and collaborative workshops.</p>
+
+                    <p>We are actively seeking new members to join our growing community! Whether you're a seasoned tech veteran or just starting your journey, there's a place for you here. You can join our Facebook group by clicking the <a href="#facebook-link">Facebook</a> link at the bottom of this website.</p>
                     
                     <!-- Clickable Boxes Grid -->
                     <div class="os-support-grid">
@@ -664,10 +664,11 @@
         <div class="social-links">
             <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <!-- Added ID for the scroll link -->
+            <a href="#" id="facebook-link" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
             <a href="mailto:karingalcc@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
         </div>
-        <p class="footer-text">&copy; 2026 The Karingal Computer Club Inc. | Karingal, Victoria, Australia</p>
+        <p class="footer-text">&copy; 2026 The Karingal Computer Club | Karingal, Victoria, Australia</p>
         <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.8rem;">Promoting technology, community, and lifelong learning.</p>
     </footer>
 
