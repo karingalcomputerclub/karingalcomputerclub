@@ -207,10 +207,10 @@
             margin-bottom: 0;
         }
 
-        /* --- OS Support Grid --- */
+        /* --- OS & Interest Support Grid (Evenly Fitted) --- */
         .os-support-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* Exactly 3 equal columns */
             gap: 1rem;
             margin-top: 1.5rem;
         }
@@ -219,7 +219,7 @@
             background: var(--bg-panel-hover);
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 1rem;
+            padding: 1.25rem 1rem;
             text-align: center;
             transition: var(--transition);
         }
@@ -232,18 +232,19 @@
         .os-card i {
             font-size: 2rem;
             color: var(--accent-purple);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .os-card h4 {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-main);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
         }
 
         .os-card p {
             font-size: 0.8rem;
             color: var(--text-muted);
+            line-height: 1.4;
         }
 
         /* --- Suppliers Grid --- */
@@ -320,11 +321,19 @@
             color: var(--accent-purple);
         }
 
+        .calendar-iframe-wrapper {
+            background-color: #0f0f13;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
         .calendar-iframe {
             width: 100%;
+            max-width: 800px;
             height: 600px;
             border: none;
-            background-color: #0f0f13;
+            display: block;
         }
 
         .calendar-note {
@@ -451,8 +460,20 @@
                 text-align: center;
             }
 
+            /* Stack OS grid to 2 columns on smaller screens */
+            .os-support-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .calendar-iframe {
                 height: 500px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Stack OS grid to 1 column on very small screens */
+            .os-support-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -496,8 +517,11 @@
                     
                     <p><strong>Platform Support:</strong> We provide dedicated support and discussion groups for <strong>Windows and Microsoft Software</strong>, including everything from Windows 10/11 troubleshooting to Office 365, PowerShell scripting, and .NET development. We also have strong <strong>Linux support for all major distributions</strong> including Ubuntu, Fedora, Debian, Arch Linux, openSUSE, Mint, and more. Whether you're compiling kernels, managing systemd services, or troubleshooting package managers, our Linux community has you covered. We also welcome our <strong>Apple and macOS users</strong> who contribute to our diverse tech conversations.</p>
                     
+                    <p>Beyond traditional computing, we are deeply passionate about the beauty of cutting-edge Artificial Intelligence. From exploring large language models and generative art to running local AI models and experimenting with machine learning, we believe AI is an incredibly fun and creative frontier. Our club provides a welcoming space to demystify AI, share prompts, and explore how these powerful tools can be used for both practical projects and pure entertainment.</p>
+                    
                     <p>Our purpose is to foster knowledge sharing across all platforms, provide a supportive environment for troubleshooting and learning, and build genuine community connections through our shared passion for technology. We host regular meetups, hardware swap meets, and collaborative workshops.</p>
                     
+                    <!-- Evenly Fitted Grid -->
                     <div class="os-support-grid">
                         <div class="os-card">
                             <i class="fa-brands fa-windows"></i>
@@ -519,6 +543,16 @@
                             <h4>Development</h4>
                             <p>Cross-platform tools and frameworks</p>
                         </div>
+                        <div class="os-card">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <h4>Retro Gaming</h4>
+                            <p>Emulation, classic hardware & DOSBox</p>
+                        </div>
+                        <div class="os-card">
+                            <i class="fa-brands fa-raspberry-pi"></i>
+                            <h4>Raspberry Pi</h4>
+                            <p>Projects, home automation & SBCs</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -526,7 +560,7 @@
 
         <!-- Local Suppliers Section -->
         <section id="suppliers">
-            <h2><i class="fa-solid fa-store"></i> Local & National Hardware Suppliers</h2>
+            <h2><i class="fa-solid fa-store"></i> Local Melbourne Hardware Suppliers</h2>
             <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Supporting trusted businesses is a core value of our club. Here are six highly regarded computer hardware retailers that our members rely on for parts, builds, and tech.</p>
             
             <div class="suppliers-grid">
@@ -584,14 +618,18 @@
                     <i class="fa-solid fa-calendar-check"></i>
                     <h3>Karingal Computer Club Events</h3>
                 </div>
-                <!-- Embedded Google Calendar -->
-                <!-- Replace the src URL below with your actual Google Calendar embed URL -->
-                <iframe 
-                    class="calendar-iframe" 
-                    src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID%40group.calendar.google.com&ctz=Australia%2FMelbourne"
-                    frameborder="0" 
-                    scrolling="no">
-                </iframe>
+                <div class="calendar-iframe-wrapper">
+                    <!-- Embedded Google Calendar -->
+                    <iframe 
+                        class="calendar-iframe" 
+                        src="https://calendar.google.com/calendar/embed?src=karingalcc%40gmail.com&ctz=Australia%2FMelbourne" 
+                        style="border: 0" 
+                        width="800" 
+                        height="600" 
+                        frameborder="0" 
+                        scrolling="no">
+                    </iframe>
+                </div>
                 <div class="calendar-note">
                     <i class="fa-solid fa-lock"></i>
                     <span>Calendar is view-only for visitors. Club administrators can edit events by logging into their Google account.</span>
@@ -621,7 +659,7 @@
             <a href="#" aria-label="X (formerly Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
             <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-            <a href="mailto:info@karingalcomputerclub.org.au" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="mailto:karingalcc@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
         </div>
         <p class="footer-text">&copy; 2026 The Karingal Computer Club Inc. | Karingal, Victoria, Australia</p>
         <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.8rem;">Promoting technology, community, and lifelong learning.</p>
