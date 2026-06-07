@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /private/
+Sitemap: https://karingalcomputerclub.github.io/sitemap.xml   
