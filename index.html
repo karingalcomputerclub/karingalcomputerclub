@@ -222,11 +222,17 @@
             padding: 1.25rem 1rem;
             text-align: center;
             transition: var(--transition);
+            
+            /* Link Styling Overrides */
+            text-decoration: none;
+            color: var(--text-main);
+            display: block; 
         }
 
         .os-card:hover {
             border-color: var(--accent-purple);
             transform: translateY(-2px);
+            background: var(--bg-panel);
         }
 
         .os-card i {
@@ -521,38 +527,38 @@
                     
                     <p>Our purpose is to foster knowledge sharing across all platforms, provide a supportive environment for troubleshooting and learning, and build genuine community connections through our shared passion for technology. We host regular meetups, hardware swap meets, and collaborative workshops.</p>
                     
-                    <!-- Evenly Fitted Grid -->
+                    <!-- Clickable Boxes Grid -->
                     <div class="os-support-grid">
-                        <div class="os-card">
+                        <a href="https://www.microsoft.com/en-au/windows" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-brands fa-windows"></i>
                             <h4>Windows</h4>
                             <p>Windows 10/11, Office 365, PowerShell</p>
-                        </div>
-                        <div class="os-card">
+                        </a>
+                        <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-brands fa-linux"></i>
                             <h4>Linux</h4>
                             <p>Ubuntu, Fedora, Debian, Arch, Mint</p>
-                        </div>
-                        <div class="os-card">
+                        </a>
+                        <a href="https://www.apple.com/au/macos/" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-brands fa-apple"></i>
                             <h4>macOS</h4>
                             <p>Mac hardware and software support</p>
-                        </div>
-                        <div class="os-card">
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-solid fa-code"></i>
                             <h4>Development</h4>
                             <p>Cross-platform tools and frameworks</p>
-                        </div>
-                        <div class="os-card">
+                        </a>
+                        <a href="https://www.myabandonware.com/" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-solid fa-gamepad"></i>
                             <h4>Retro Gaming</h4>
                             <p>Emulation, classic hardware & DOSBox</p>
-                        </div>
-                        <div class="os-card">
+                        </a>
+                        <a href="https://www.raspberrypi.com/" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-brands fa-raspberry-pi"></i>
                             <h4>Raspberry Pi</h4>
                             <p>Projects, home automation & SBCs</p>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -581,7 +587,7 @@
                 <!-- Supplier 3: Centre Com -->
                 <div class="supplier-card">
                     <h3><i class="fa-solid fa-desktop"></i> Centre Com</h3>
-                    <p>Located in Frankston, known for competitive pricing on PC parts, business IT solutions, and a wide range of consumer hardware.</p>
+                    <p>Located in Richmond, known for competitive pricing on PC parts, business IT solutions, and a wide range of consumer hardware.</p>
                     <a href="https://www.centrecom.com.au" target="_blank" rel="noopener" class="supplier-link">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
 
