@@ -114,6 +114,43 @@
         .nav-links a { color: var(--text-muted); font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
         .nav-links a:hover { color: var(--text-main); }
 
+        /* Notice Banner (Moved to Hero) */
+        .notice-banner {
+            max-width: 600px; /* Constrained width */
+            margin: 2rem auto 0; /* Centered and spaced below button */
+            padding: 0 1rem;
+            display: flex;
+            justify-content: center;
+        }
+        .notice-box {
+            background: var(--bg-panel);
+            border: 1px solid var(--accent-purple);
+            border-radius: 6px;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-height: 44px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .notice-icon {
+            color: var(--accent-purple);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .notice-text {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.5s ease;
+            flex-grow: 1;
+            text-align: left;
+        }
+        .notice-text.fade-out {
+            opacity: 0;
+        }
+
         /* Layout */
         main { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem 4rem; }
         section { margin-bottom: 5rem; padding-top: 5rem; margin-top: -5rem; }
@@ -193,8 +230,12 @@
             .about-content { flex-direction: column; align-items: center; text-align: center; }
             .os-support-grid { grid-template-columns: repeat(2, 1fr); }
             .calendar-iframe { height: 500px; }
+            .notice-box { font-size: 0.85rem; }
         }
-        @media (max-width: 480px) { .os-support-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 480px) { 
+            .os-support-grid { grid-template-columns: 1fr; }
+            .notice-text { font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -220,6 +261,14 @@
             <h1 class="hero-title">The Karingal Computer Club</h1>
             <p class="hero-subtitle">A welcoming social community for technology enthusiasts, hobbyists and learners in Karingal, Victoria.</p>
             <a href="#about" class="cta-button">Discover Our Purpose <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+            
+            <!-- Notice Banner (Moved here) -->
+            <div class="notice-banner">
+                <div class="notice-box">
+                    <i class="fa-solid fa-bullhorn notice-icon" aria-hidden="true"></i>
+                    <span id="notice-text" class="notice-text">Welcome to The Karingal Computer Club!</span>
+                </div>
+            </div>
         </section>
 
         <section id="about">
@@ -250,7 +299,7 @@
                         <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-solid fa-code" aria-hidden="true"></i><h4>Development</h4><p>Cross-platform tools like VS Code and .NET frameworks</p>
                         </a>
-                        <a href="https://https://retroarch.com//" target="_blank" rel="noopener noreferrer" class="os-card">
+                        <a href="https://retroarch.com/" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-solid fa-gamepad" aria-hidden="true"></i><h4>Retro Gaming</h4><p>Emulation, Classic Hardware & good old RetroArch</p>
                         </a>
                         <a href="https://www.raspberrypi.com/" target="_blank" rel="noopener noreferrer" class="os-card">
@@ -366,6 +415,38 @@
 
     <!-- Custom JavaScript -->
     <script>
+        // ============================================
+        // EDITABLE NOTICE MESSAGES - Update these!
+        // ============================================
+        const noticeMessages = [
+            "Welcome to The Karingal Computer Club!",
+            "📅 Next meetup: Check our Events calendar for details",
+            "💻 We support Windows, Linux, macOS & more!",
+            "🤖 Explore AI, Raspberry Pi & Retro Gaming with us",
+            "🎮 Join our Facebook group to connect with members",
+            "📍 Meet at Karingal PLACE Neighbourhood Centre",
+            "🔧 Hardware swap meets & workshops regularly",
+            "📧 Contact us: karingalcc@gmail.com"
+        ];
+        // ============================================
+
+        let currentNoticeIndex = 0;
+        const noticeTextElement = document.getElementById('notice-text');
+        const noticeInterval = 5000; // 5 seconds
+
+        function rotateNotice() {
+            noticeTextElement.classList.add('fade-out');
+            
+            setTimeout(() => {
+                currentNoticeIndex = (currentNoticeIndex + 1) % noticeMessages.length;
+                noticeTextElement.textContent = noticeMessages[currentNoticeIndex];
+                noticeTextElement.classList.remove('fade-out');
+            }, 500);
+        }
+
+        setInterval(rotateNotice, noticeInterval);
+
+        // Back to Top Button
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 400) {
@@ -381,13 +462,14 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const headerOffset = 80;
+                    const headerOffset = 80; // Adjusted back to 80 since banner is no longer in the fixed header
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
