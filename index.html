@@ -279,21 +279,41 @@
 
         /* Notice Banner */
         .notice-banner {
-            max-width: 600px;
             margin: 2.5rem auto 0;
-            padding: 0 1rem;
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
         .notice-box {
-            background: rgba(20, 20, 30, 0.7);
+            /* Dynamic sizing based on content */
+            display: inline-flex;
+            max-width: 90vw;
+            
+            /* Geometric and subtle background */
+            background-color: rgba(18, 18, 28, 0.85);
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(122, 107, 153, 0.05) 10px,
+                    rgba(122, 107, 153, 0.05) 11px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(122, 107, 153, 0.05) 10px,
+                    rgba(122, 107, 153, 0.05) 11px
+                );
+                
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(122, 107, 153, 0.3);
-            border-radius: 60px;
+            border-radius: 16px;
             padding: 0.7rem 1.5rem;
-            display: flex;
             align-items: center;
             gap: 0.9rem;
-            min-height: 50px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         .notice-icon {
@@ -311,7 +331,6 @@
             font-size: 0.95rem;
             font-weight: 500;
             transition: opacity 0.5s ease;
-            flex-grow: 1;
             text-align: left;
         }
         .notice-text.fade-out {
@@ -635,7 +654,7 @@
                 height: 450px;
             }
             .notice-box {
-                border-radius: 40px;
+                border-radius: 12px;
                 padding: 0.6rem 1.2rem;
             }
             .notice-text {
