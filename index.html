@@ -745,6 +745,57 @@
             color: #c9b8f0;
         }
 
+        /* ========== AI CHATBOTS BOX ========== */
+        .ai-favorites-box {
+            display: inline-block;
+            margin: 0.8rem auto 0;
+            padding: 0.4rem 0.9rem;
+            border: 1px solid rgba(122, 107, 153, 0.3);
+            border-radius: 8px;
+            background: rgba(18, 18, 28, 0.5);
+            max-width: 95%;
+        }
+        .ai-favorites-title {
+            font-size: 0.68rem;
+            color: #a78fcb;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+        }
+        .ai-favorites-title i {
+            font-size: 0.6rem;
+        }
+        .ai-favorites-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.15rem 0.55rem;
+            list-style: none;
+        }
+        .ai-favorites-links li {
+            display: inline;
+        }
+        .ai-favorites-links a {
+            font-size: 0.68rem;
+            color: #b0acc0;
+            font-weight: 500;
+            transition: color 0.25s ease;
+            white-space: nowrap;
+        }
+        .ai-favorites-links a:hover {
+            color: #c9b8f0;
+        }
+        .ai-favorites-links li:not(:last-child) a::after {
+            content: '•';
+            margin-left: 0.55rem;
+            color: rgba(122, 107, 153, 0.4);
+        }
+
         /* ========== BACK TO TOP ========== */
         #backToTop {
             position: fixed;
@@ -894,6 +945,15 @@
             .social-links a {
                 font-size: 1.5rem;
             }
+            .ai-favorites-links a {
+                font-size: 0.64rem;
+            }
+            .ai-favorites-links {
+                gap: 0.1rem 0.45rem;
+            }
+            .ai-favorites-links li:not(:last-child) a::after {
+                margin-left: 0.45rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1007,6 +1067,18 @@
             .footer-text {
                 font-size: 0.85rem;
             }
+            .ai-favorites-box {
+                padding: 0.3rem 0.6rem;
+            }
+            .ai-favorites-links a {
+                font-size: 0.6rem;
+            }
+            .ai-favorites-links {
+                gap: 0.05rem 0.35rem;
+            }
+            .ai-favorites-links li:not(:last-child) a::after {
+                margin-left: 0.35rem;
+            }
             #backToTop {
                 width: 44px;
                 height: 44px;
@@ -1024,6 +1096,9 @@
             }
             .notice-text {
                 font-size: 0.75rem;
+            }
+            .ai-favorites-links a {
+                font-size: 0.55rem;
             }
         }
 
@@ -1117,10 +1192,10 @@
                     
                     <div class="os-support-grid">
                         <a href="https://www.microsoft.com/en-au/windows" target="_blank" rel="noopener noreferrer" class="os-card">
-                            <i class="fa-brands fa-windows" aria-hidden="true"></i><h4>Windows</h4><p>Windows 10/11, MS Office Products, PowerShell</p>
+                            <i class="fa-brands fa-windows" aria-hidden="true"></i><h4>Windows</h4><p>Windows 10/11, MS Office, PowerShell</p>
                         </a>
                         <a href="https://distrowatch.com/" target="_blank" rel="noopener noreferrer" class="os-card">
-                            <i class="fa-brands fa-linux" aria-hidden="true"></i><h4>Linux Distros</h4><p>Ubuntu, Fedora, Debian, Zorin, Mint Including DE Gnome &amp; KDE</p>
+                            <i class="fa-brands fa-linux" aria-hidden="true"></i><h4>Linux Distros</h4><p>Ubuntu, Fedora, Debian, Zorin, Mint, Gnome &amp; KDE</p>
                         </a>
                         <a href="https://www.apple.com/au/macos/" target="_blank" rel="noopener noreferrer" class="os-card">
                             <i class="fa-brands fa-apple" aria-hidden="true"></i><h4>macOS</h4><p>Mac hardware and software support</p>
@@ -1225,6 +1300,21 @@
         <p class="footer-text">&copy; 2026 The Karingal Computer Club | Karingal, Victoria, Australia</p>
         <p class="footer-text" style="margin-top: 0.5rem; font-size: 0.85rem;">Promoting technology, community, and lifelong learning.</p>
         
+        <!-- My Favourite AI Chat Bots -->
+        <div class="ai-favorites-box">
+            <div class="ai-favorites-title"><i class="fa-solid fa-robot" aria-hidden="true"></i> My Favourite AI Chat Bots</div>
+            <ul class="ai-favorites-links">
+                <li><a href="https://chat.qwen.ai" target="_blank" rel="noopener noreferrer">Qwen</a></li>
+                <li><a href="https://chat.deepseek.com" target="_blank" rel="noopener noreferrer">DeepSeek</a></li>
+                <li><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Gemini</a></li>
+                <li><a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer">Copilot</a></li>
+                <li><a href="https://grok.com" target="_blank" rel="noopener noreferrer">Grok</a></li>
+                <li><a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">ChatGPT</a></li>
+                <li><a href="https://ollama.com" target="_blank" rel="noopener noreferrer">Ollama</a></li>
+                <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a></li>
+            </ul>
+        </div>
+        
         <p class="footer-text" style="margin-top: 1rem; font-size: 0.7rem; opacity: 0.6;">
             <a href="https://www.flaticon.com/free-icons/chatbot" title="chatbot icons" style="color: #9894a8;">Chatbot icons created by Freepik - Flaticon</a>
         </p>
@@ -1253,10 +1343,10 @@
         const noticeMessages = [
             "Welcome to The Karingal Computer Club!",
             "📅 Next meetup: Check our Events calendar for details",
-            " We support Windows, Linux, macOS & more!",
+            "💻 We support Windows, Linux, macOS & more!",
             "🤖 Explore AI, Raspberry Pi & Retro Gaming with us",
             "🎮 Join our Facebook group to connect with members",
-            " Meet at Karingal PLACE Neighbourhood Centre",
+            "📍 Meet at Karingal PLACE Neighbourhood Centre",
             "🔧 Hardware swap meets & workshops regularly",
             "📧 Contact us: karingalcc@gmail.com"
         ];
